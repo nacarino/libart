@@ -1,4 +1,4 @@
-libart [![Build Status](https://travis-ci.org/armon/libart.png)](https://travis-ci.org/armon/libart)
+libart 
 =========
 
 This library provides a C99 implementation of the Adaptive Radix
@@ -16,19 +16,21 @@ As a radix tree, it provides the following:
  * Ordered iteration
  * Prefix based iteration
 
+This is a fork from [armon's](https://github.com/armon) repository used for personal testing.
 
 Usage
 -------
 
-Building the test code will generate errors if libcheck is not available.
-To build the test code successfully, do the following::
+The test code cannot be built without the library check. The tests are run
+using scons.
 
-    $ cd deps/check-0.9.8/
-    $ ./configure
-    $ make
-    # make install
-    # ldconfig (necessary on some Linux distros)
-    $ cd ../../
+If you are on a Debian-based operating system you can install the mininum
+requirements with the following command:
+
+    # apt-get install check scons
+
+Once installed you can run the following:
+
     $ scons
     $ ./test_runner
 
