@@ -3,7 +3,7 @@ import os
 # assume check was installed into /usr/local/
 env_with_err = Environment(
 	ENV = os.environ,
-	CPPPATH = ['#/src', '/usr/local/include'])
+	CPPPATH = ['#/src', '/usr/lib'])
 if "CC" in os.environ:
 	env_with_err["CC"] = os.environ["CC"]
 if "CCFLAGS" not in os.environ:
@@ -13,6 +13,6 @@ if "CCFLAGS" not in os.environ:
 objs = env_with_err.Object('src/art', 'src/art.c')
 test_runner = env_with_err.Program('test_runner',
             objs + ["tests/runner.c"],
-            LIBS=["check"],
-            LIBPATH = ['/usr/lib', '/usr/local/lib'])
+            LIBS=["check", "m", "pthread", "rt"],
+            LIBPATH = ['/lib', '/usr/lib'])
 Default(test_runner)
